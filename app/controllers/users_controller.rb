@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
   # Leer los detalles de un registro
   def read
-    @user = params[:url]
-    @user = User.where(url: @user)
+    @user = params[:id]
+    @user = User.where(id: @user)
   end
 
   # Llamamos a la vista con el formulario para crear un registro

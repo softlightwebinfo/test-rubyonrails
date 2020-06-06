@@ -1,2 +1,54 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container mt-5">
+  <!-- Mensajes -->
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert" id="notice" class="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>email</th>
+      <th>telefono</th>
+      <th>Imagen</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |postres| %>
+      <tr>
+        <td class="v-align-middle">
+          <%= postres.name %>
+        </td>
+        <td class="v-align-middle">
+          <%= postres.email %>
+        </td>
+        <td class="v-align-middle">
+          <%= postres.phone %>
+        </td>
+        <td class="v-align-middle">
+          <img src="/assets/img/<%= postres.img %>" width="30" class="img-fluid" title="<%= postres.name %>" alt="<%= postres.name %>">
+        </td>
+        <td class="v-align-middle">
+
+          <form method="POST" action="/users/eliminar/<%= postres.id %>" accept-charset="UTF-8" class="form-horizontal" role="form">
+
+            <!-- Protección CSRF -->
+            <%= token_tag nil %>
+
+            <a href="/users/read/<%= postres.id %>" class="btn btn-dark">Detalles</a>
+            <a href="/users/update/<%= postres.id %>" class="btn btn-primary">Editar</a>
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+
+          </form>
+
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -1,2 +1,41 @@
-<h1>Users#read</h1>
-<p>Find me in app/views/users/read.html.erb</p>
+<div class="container mt-5">
+  <% @user.each do |users| %>
+
+    <section class="text-center">
+      <div class="container">
+        <h3 class="jumbotron-heading"><%= users.name %></h3>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-5">
+            <img style="width: 300px;height: 300px" src="/assets/img/<%= users.img %>" class="img-fluid" title="<%= users.name %>" alt="<%= users.name %>">
+          </div>
+
+          <div class="col-md-5" align="left">
+
+            <strong>Telefono:</strong>
+            <%= users.phone %>
+
+            <br><br>
+            <strong>Email:</strong>
+            <%= users.email %>
+
+            <br><br>
+
+            <strong>Creado:</strong>
+            <%= users.created_at.strftime("%d/%m/%Y") %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
