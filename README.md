@@ -74,6 +74,10 @@ Things you may want to cover:
 - rails server --binding=127.0.0.1
 - http://127.0.0.1:3000
 
+### Prepare Migration DB
+- rails generate migration AddPartNumberToProducts
+- rake db:migrate
+
 ## Create controllers and views
 - rails g controller users index read create update 
 

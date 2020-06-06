@@ -1,2 +1,58 @@
-<h1>Users#create</h1>
-<p>Find me in app/views/users/create.html.erb</p>
+<form method="POST" action="/users/insertar" accept-charset="UTF-8" role="form" id="crearpostre" name="crearpostre" enctype="multipart/form-data">
+
+  <!-- Protección CSRF -->
+  <%= token_tag nil %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <section class="panel">
+        <div class="panel-body">
+
+          <div class="form-group">
+            <label for="name" class="negrita">Nombre:</label>
+            <div>
+              <input class="form-control" placeholder="Nombre" name="name" type="text" id="nombre" onload="crearUrlAmigable(this.value);" onkeypress="crearUrlAmigable(this.value);" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="negrita">Email:</label>
+            <div>
+              <input class="form-control" placeholder="Email" name="email" type="email" id="nombre" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="negrita">Contraseña:</label>
+            <div>
+              <input class="form-control" placeholder="Contraseña" name="password" type="password" id="password" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="negrita">Telefono:</label>
+            <div>
+              <input class="form-control" placeholder="Telefono" name="phone" type="tel" id="phone" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="img" class="negrita">Selecciona una imagen:</label>
+            <div>
+              <input class="form-control" type="file" name="img" id="img" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="url" class="negrita">URL:</label>
+            <div>
+              <input type="text" class="form-control" name="url" id="url" readonly>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-info">Guardar</button>
+          <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+
+          <br>
+        </div>
+      </section>
+    </div>
+  </div>
+</form>
